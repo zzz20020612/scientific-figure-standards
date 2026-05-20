@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Figure Standards"
+  short_description: "Hard plotting and map standards."
+  default_prompt: "Use this skill for any scientific figure, map, raster visualization, manuscript plot, or publication-ready chart. Ask for text/no-text version, preserve the user visual standards, and run output QA."
