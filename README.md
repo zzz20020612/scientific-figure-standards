@@ -47,13 +47,30 @@ scientific-figure-standards/
 
 ## Installation
 
-Place this folder under your Codex skills directory:
+Install by cloning this repository into your Codex skills directory. On Windows PowerShell:
 
-```text
-C:\Users\86188\.codex\skills\scientific-figure-standards
+```powershell
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex\skills" | Out-Null
+git clone https://github.com/zzz20020612/scientific-figure-standards.git "$env:USERPROFILE\.codex\skills\scientific-figure-standards"
 ```
 
-Codex can then discover and use the skill whenever a task involves scientific plotting, map drawing, raster visualization, manuscript figures, or publication exports.
+If the target folder already exists, update it instead:
+
+```powershell
+cd "$env:USERPROFILE\.codex\skills\scientific-figure-standards"
+git pull
+```
+
+On macOS/Linux:
+
+```bash
+mkdir -p ~/.codex/skills
+git clone https://github.com/zzz20020612/scientific-figure-standards.git ~/.codex/skills/scientific-figure-standards
+```
+
+If your Codex installation uses a custom `CODEX_HOME`, install under `$CODEX_HOME/skills/scientific-figure-standards` instead of `~/.codex/skills/scientific-figure-standards`.
+
+After installation, restart Codex or start a new session so the skill metadata can be discovered.
 
 ## First-Version Note
 
