@@ -1,16 +1,18 @@
 # Current Project Style
 
-This reference summarizes style extracted from `D:\代码合集` as of 2026-05-20. Use it as the house-style evidence base, not as a closed list of supported plot types.
+This reference summarizes an anonymized source-project style snapshot from prior environmental modeling, raster processing, and manuscript-figure work. Use it as the house-style evidence base, not as a closed list of supported plot types.
 
-## Project Areas Studied
+## Source Areas Studied
 
-- `ERA5数据下载`: ERA5-Land download and NetCDF to GeoTIFF conversion.
-- `HWSD数据下载`: HWSD Excel joins and raster layer exports.
-- `论文模型及绘图`: core hierarchical pollution allocation model and paper plots.
-- `绘图代码\论文插图`: duplicated/curated paper-figure scripts.
-- `绘图代码\地图`: global CH4 raster map scripts.
+The style snapshot was extracted from representative scripts covering:
 
-The source folder is not a Git repository, so no commit history was available.
+- ERA5-Land download and NetCDF-to-GeoTIFF conversion.
+- HWSD Excel joins and raster layer exports.
+- A core hierarchical pollution allocation model and its paper figures.
+- Curated manuscript-figure scripts.
+- Global CH4 raster map scripts.
+
+The original source snapshot was not a Git repository, so no commit history was available.
 
 ## Core Visual Identity
 
@@ -20,7 +22,7 @@ The source folder is not a Git repository, so no commit history was available.
 - Large, readable standalone figures.
 - Complete plot borders are common and should remain the default.
 - Clean high-DPI PNG output is common; formal outputs should now add SVG.
-- Figure text is usually English even when code comments are Chinese.
+- Figure text is usually English even when source-code comments are not.
 - Avoid decorative visual effects.
 
 ## Fixed Palettes
@@ -72,7 +74,7 @@ These patterns are examples. For new figure types, preserve the same house rules
 
 ## Core Model Context
 
-The core model is a hierarchical spatial allocation workflow:
+The representative model context is a hierarchical spatial allocation workflow:
 
 - input raster features include nightlight, hotel, basestation, and building variables;
 - raster outputs are aggregated to township via `scatter_add_`;
@@ -81,8 +83,8 @@ The core model is a hierarchical spatial allocation workflow:
 - training uses MSE plus a native-pollution constraint;
 - outputs include CSV comparisons and GeoTIFF predictions.
 
-When plotting model results, be explicit about whether values are normalized fractions, absolute loads, or rescaled raster predictions.
+When plotting comparable model results, be explicit about whether values are normalized fractions, absolute loads, or rescaled raster predictions.
 
 ## Encoding Caution
 
-Some source files display mojibake in comments/strings depending on terminal decoding. Preserve original source encodings when editing legacy files and avoid introducing new mojibake into figure text.
+Legacy source files can display mojibake in comments/strings depending on terminal decoding. Preserve original source encodings when editing legacy files and avoid introducing mojibake into figure text.

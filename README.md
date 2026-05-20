@@ -43,11 +43,13 @@ scientific-figure-standards/
 
 ## Install for Codex
 
+Replace `<repo-url>` with this repository's clone URL.
+
 Windows PowerShell:
 
 ```powershell
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex\skills" | Out-Null
-git clone https://github.com/zzz20020612/scientific-figure-standards.git "$env:USERPROFILE\.codex\skills\scientific-figure-standards"
+git clone <repo-url> "$env:USERPROFILE\.codex\skills\scientific-figure-standards"
 ```
 
 Update an existing install:
@@ -61,7 +63,7 @@ macOS/Linux:
 
 ```bash
 mkdir -p ~/.codex/skills
-git clone https://github.com/zzz20020612/scientific-figure-standards.git ~/.codex/skills/scientific-figure-standards
+git clone <repo-url> ~/.codex/skills/scientific-figure-standards
 ```
 
 If your Codex installation uses a custom `CODEX_HOME`, install under `$CODEX_HOME/skills/scientific-figure-standards` instead.
@@ -72,14 +74,14 @@ Claude Code skills are filesystem-based. Install this repository as a user skill
 
 ```bash
 mkdir -p ~/.claude/skills
-git clone https://github.com/zzz20020612/scientific-figure-standards.git ~/.claude/skills/scientific-figure-standards
+git clone <repo-url> ~/.claude/skills/scientific-figure-standards
 ```
 
 Or install it only for one project:
 
 ```bash
 mkdir -p .claude/skills
-git clone https://github.com/zzz20020612/scientific-figure-standards.git .claude/skills/scientific-figure-standards
+git clone <repo-url> .claude/skills/scientific-figure-standards
 ```
 
 Restart Claude Code or start a new session after installing a new top-level skill directory.
@@ -101,7 +103,7 @@ For a reusable local setup, keep this repository cloned somewhere stable and cop
 - `references/visual-standards.md`: scientific figure typography, palettes, axes, legends, exports, and QA.
 - `references/map-standards.md`: world/regional map rules, GeoTIFF handling, projections, colorbars, and map color ramps.
 - `references/data-standards.md`: data cleaning, unit conversion, model metrics, statistics, and naming standards.
-- `references/current-project-style.md`: style extracted from the source local project and used as house-style evidence.
+- `references/current-project-style.md`: anonymized house-style examples extracted from prior scientific plotting work.
 
 ## Helper Scripts
 
