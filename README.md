@@ -10,6 +10,12 @@ This repository works in three modes:
 
 The standards preserve a consistent house style for manuscript figures, scientific plots, model-result visualizations, GeoTIFF/raster maps, and publication-ready exports. The examples are not a closed list of supported chart types.
 
+## Version and License
+
+Current version: `0.1.0`
+
+License: MIT. You may freely use, copy, modify, distribute, and adapt this project.
+
 ## What It Enforces
 
 - Ask whether each output should be `with_text`, `no_text`, or both before plotting.
@@ -29,6 +35,9 @@ scientific-figure-standards/
 ├── SKILL.md                 # Codex / Claude Code skill entrypoint
 ├── AGENTS.md                # OpenCode / agent instruction entrypoint
 ├── CLAUDE.md                # Claude Code project-instruction fallback
+├── CHANGELOG.md
+├── LICENSE
+├── VERSION
 ├── agents/
 │   └── openai.yaml
 ├── references/
