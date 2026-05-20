@@ -1,8 +1,14 @@
 # Scientific Figure Standards
 
-A global Codex skill for enforcing consistent scientific plotting and map standards across local projects.
+A portable AI-agent skill/instruction pack for enforcing consistent scientific plotting and map standards across local projects.
 
-This skill captures a house style for manuscript figures, scientific plots, model-result visualizations, GeoTIFF/raster maps, and publication-ready exports. It is designed to preserve a consistent visual language rather than only providing examples for a few chart types.
+This repository works in three modes:
+
+- **Codex Skill**: install under `~/.codex/skills/scientific-figure-standards`.
+- **Claude Code Skill**: install under `~/.claude/skills/scientific-figure-standards` or a project `.claude/skills/scientific-figure-standards` folder.
+- **OpenCode / AGENTS.md instruction pack**: copy or merge `AGENTS.md` into the target project's instruction file.
+
+The standards preserve a consistent house style for manuscript figures, scientific plots, model-result visualizations, GeoTIFF/raster maps, and publication-ready exports. The examples are not a closed list of supported chart types.
 
 ## What It Enforces
 
@@ -16,11 +22,13 @@ This skill captures a house style for manuscript figures, scientific plots, mode
 - Add SVG/PDF editable-text export rules for formal scientific figures.
 - Run final QA for fonts, units, palettes, overlap, version correctness, and output quality.
 
-## Skill Structure
+## Repository Structure
 
 ```text
 scientific-figure-standards/
-├── SKILL.md
+├── SKILL.md                 # Codex / Claude Code skill entrypoint
+├── AGENTS.md                # OpenCode / agent instruction entrypoint
+├── CLAUDE.md                # Claude Code project-instruction fallback
 ├── agents/
 │   └── openai.yaml
 ├── references/
@@ -33,6 +41,61 @@ scientific-figure-standards/
     └── map_style.py
 ```
 
+## Install for Codex
+
+Windows PowerShell:
+
+```powershell
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex\skills" | Out-Null
+git clone https://github.com/zzz20020612/scientific-figure-standards.git "$env:USERPROFILE\.codex\skills\scientific-figure-standards"
+```
+
+Update an existing install:
+
+```powershell
+cd "$env:USERPROFILE\.codex\skills\scientific-figure-standards"
+git pull
+```
+
+macOS/Linux:
+
+```bash
+mkdir -p ~/.codex/skills
+git clone https://github.com/zzz20020612/scientific-figure-standards.git ~/.codex/skills/scientific-figure-standards
+```
+
+If your Codex installation uses a custom `CODEX_HOME`, install under `$CODEX_HOME/skills/scientific-figure-standards` instead.
+
+## Install for Claude Code
+
+Claude Code skills are filesystem-based. Install this repository as a user skill:
+
+```bash
+mkdir -p ~/.claude/skills
+git clone https://github.com/zzz20020612/scientific-figure-standards.git ~/.claude/skills/scientific-figure-standards
+```
+
+Or install it only for one project:
+
+```bash
+mkdir -p .claude/skills
+git clone https://github.com/zzz20020612/scientific-figure-standards.git .claude/skills/scientific-figure-standards
+```
+
+Restart Claude Code or start a new session after installing a new top-level skill directory.
+
+## Use with OpenCode
+
+OpenCode reads `AGENTS.md` instructions from a project. To apply these standards to a project, copy or merge this repository's `AGENTS.md` into that project's `AGENTS.md`:
+
+```bash
+cp path/to/scientific-figure-standards/AGENTS.md /path/to/your-project/AGENTS.md
+```
+
+If the project already has an `AGENTS.md`, merge the plotting section instead of replacing existing project rules.
+
+For a reusable local setup, keep this repository cloned somewhere stable and copy the `AGENTS.md` content into any project where OpenCode should enforce these figure standards.
+
 ## References
 
 - `references/visual-standards.md`: scientific figure typography, palettes, axes, legends, exports, and QA.
@@ -44,33 +107,6 @@ scientific-figure-standards/
 
 - `scripts/figure_style.py`: reusable Matplotlib style helpers, color constants, no-text stripping, and save helpers.
 - `scripts/map_style.py`: reusable map color ramps, raster cleaning, lon/lat mesh helpers, colorbar text removal, and map saving.
-
-## Installation
-
-Install by cloning this repository into your Codex skills directory. On Windows PowerShell:
-
-```powershell
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex\skills" | Out-Null
-git clone https://github.com/zzz20020612/scientific-figure-standards.git "$env:USERPROFILE\.codex\skills\scientific-figure-standards"
-```
-
-If the target folder already exists, update it instead:
-
-```powershell
-cd "$env:USERPROFILE\.codex\skills\scientific-figure-standards"
-git pull
-```
-
-On macOS/Linux:
-
-```bash
-mkdir -p ~/.codex/skills
-git clone https://github.com/zzz20020612/scientific-figure-standards.git ~/.codex/skills/scientific-figure-standards
-```
-
-If your Codex installation uses a custom `CODEX_HOME`, install under `$CODEX_HOME/skills/scientific-figure-standards` instead of `~/.codex/skills/scientific-figure-standards`.
-
-After installation, restart Codex or start a new session so the skill metadata can be discovered.
 
 ## First-Version Note
 
