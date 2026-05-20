@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.0] - 2026-05-20
+
+### Added
+
+- Template-first replication layer for closer house-style reproduction.
+- `references/template-guide.md` describing when and how to use templates.
+- `templates/scatter_regression.py` for observed-vs-predicted train/test model plots.
+- `templates/scenario_bar.py` for scenario reduction-efficiency bars.
+- `templates/cumulative_distribution.py` for ranked cumulative contribution curves.
+- `templates/broken_axis_bar.py` for skewed contribution bar charts with visible broken axes.
+- `templates/shap_swarm.py` for SHAP swarm plots with mean absolute SHAP bars.
+- `templates/global_raster_map.py` for global GeoTIFF/raster maps.
+
+### Changed
+
+- `SKILL.md` now requires using templates first when a requested figure matches an existing pattern.
+- Visual and map standards now point agents to templates for exact replication.
+
 ## [0.1.0] - 2026-05-20
 
 ### Added
@@ -20,4 +38,3 @@ All notable changes to this project will be documented in this file.
 ### Notes
 
 - North-arrow and scale-bar standards are intentionally not defined in this first version. They are reserved for a later update.
-- Examples and automated tests are planned for a future release.

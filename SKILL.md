@@ -32,8 +32,9 @@ Default no-text version: remove all visible text, but retain axes/spines, tick m
 - Read `references/map-standards.md` for maps, GeoTIFF, raster, gridded, CRS, or Cartopy work.
 - Read `references/data-standards.md` when plotting data that needs unit conversion, missing-value handling, model metrics, statistics, or raster preprocessing.
 - Read `references/current-project-style.md` when reproducing the user's established local style or extracting constants from the source project.
+- Read `references/template-guide.md` when a requested figure resembles an existing house-style pattern.
 
-Use `scripts/figure_style.py` and `scripts/map_style.py` as implementation assets when writing Python plotting code. Copy or import them as appropriate for the project.
+Use `templates/` first for exact house-style replication, then `scripts/figure_style.py` and `scripts/map_style.py` as lower-level implementation assets. Copy or import them as appropriate for the project.
 
 ## Non-Negotiable Defaults
 
@@ -47,6 +48,19 @@ Use `scripts/figure_style.py` and `scripts/map_style.py` as implementation asset
 - Use `bbox_inches="tight"` and `facecolor="white"` for saved figures.
 - Set `svg.fonttype = "none"` and `pdf.fonttype = 42` before vector export.
 - Close figures after saving in scripts that generate batches.
+
+## Template-First Replication
+
+When the task resembles an existing template, start from the template rather than re-creating style from prose:
+
+- `templates/scatter_regression.py` for observed-vs-predicted train/test plots.
+- `templates/scenario_bar.py` for scenario reduction-efficiency bars.
+- `templates/cumulative_distribution.py` for ranked cumulative contribution curves.
+- `templates/broken_axis_bar.py` for skewed bar charts requiring a visible broken axis.
+- `templates/shap_swarm.py` for SHAP swarm plus mean absolute SHAP bars.
+- `templates/global_raster_map.py` for global GeoTIFF/raster maps.
+
+Only write a new plot from scratch when no template fits. If a new figure type will recur, add a new template.
 
 ## Version Rules
 

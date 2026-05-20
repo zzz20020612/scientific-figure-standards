@@ -2,6 +2,8 @@
 
 Use this reference for maps, GeoTIFFs, rasters, gridded environmental data, CRS decisions, global maps, and regional spatial visualizations.
 
+For global raster maps, start from `templates/global_raster_map.py` unless the task requires a substantially different cartographic layout.
+
 ## Version Gate
 
 Maps follow the same version rule as all figures:

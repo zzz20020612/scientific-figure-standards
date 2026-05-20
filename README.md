@@ -12,7 +12,7 @@ The standards preserve a consistent house style for manuscript figures, scientif
 
 ## Version and License
 
-Current version: `0.1.0`
+Current version: `0.2.0`
 
 License: MIT. You may freely use, copy, modify, distribute, and adapt this project.
 
@@ -26,60 +26,55 @@ License: MIT. You may freely use, copy, modify, distribute, and adapt this proje
 - Apply explicit data handling for nodata, NaN, inf, negative values, unit conversion, log transforms, clipping, and normalization.
 - Use Robinson projection by default for world maps, while respecting CRS for regional maps.
 - Add SVG/PDF editable-text export rules for formal scientific figures.
+- Use template files first when a requested figure matches an existing house-style pattern.
 - Run final QA for fonts, units, palettes, overlap, version correctness, and output quality.
+
+## Template-First Replication
+
+For exact house-style replication, start from the nearest template:
+
+- `templates/scatter_regression.py`
+- `templates/scenario_bar.py`
+- `templates/cumulative_distribution.py`
+- `templates/broken_axis_bar.py`
+- `templates/shap_swarm.py`
+- `templates/global_raster_map.py`
+
+Use prose standards only when no template matches.
 
 ## Repository Structure
 
 ```text
 scientific-figure-standards/
-├── SKILL.md                 # Codex / Claude Code skill entrypoint
-├── AGENTS.md                # OpenCode / agent instruction entrypoint
-├── CLAUDE.md                # Claude Code project-instruction fallback
+├── SKILL.md
+├── AGENTS.md
+├── CLAUDE.md
 ├── CHANGELOG.md
 ├── LICENSE
 ├── VERSION
 ├── agents/
-│   └── openai.yaml
 ├── references/
-│   ├── current-project-style.md
-│   ├── data-standards.md
-│   ├── map-standards.md
-│   └── visual-standards.md
-└── scripts/
-    ├── figure_style.py
-    └── map_style.py
+├── scripts/
+└── templates/
 ```
 
 ## Install for Codex
 
 Replace `<repo-url>` with this repository's clone URL.
 
-Windows PowerShell:
+```bash
+mkdir -p ~/.codex/skills
+git clone <repo-url> ~/.codex/skills/scientific-figure-standards
+```
+
+On Windows PowerShell:
 
 ```powershell
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex\skills" | Out-Null
 git clone <repo-url> "$env:USERPROFILE\.codex\skills\scientific-figure-standards"
 ```
 
-Update an existing install:
-
-```powershell
-cd "$env:USERPROFILE\.codex\skills\scientific-figure-standards"
-git pull
-```
-
-macOS/Linux:
-
-```bash
-mkdir -p ~/.codex/skills
-git clone <repo-url> ~/.codex/skills/scientific-figure-standards
-```
-
-If your Codex installation uses a custom `CODEX_HOME`, install under `$CODEX_HOME/skills/scientific-figure-standards` instead.
-
 ## Install for Claude Code
-
-Claude Code skills are filesystem-based. Install this repository as a user skill:
 
 ```bash
 mkdir -p ~/.claude/skills
@@ -93,32 +88,10 @@ mkdir -p .claude/skills
 git clone <repo-url> .claude/skills/scientific-figure-standards
 ```
 
-Restart Claude Code or start a new session after installing a new top-level skill directory.
-
 ## Use with OpenCode
 
-OpenCode reads `AGENTS.md` instructions from a project. To apply these standards to a project, copy or merge this repository's `AGENTS.md` into that project's `AGENTS.md`:
-
-```bash
-cp path/to/scientific-figure-standards/AGENTS.md /path/to/your-project/AGENTS.md
-```
-
-If the project already has an `AGENTS.md`, merge the plotting section instead of replacing existing project rules.
-
-For a reusable local setup, keep this repository cloned somewhere stable and copy the `AGENTS.md` content into any project where OpenCode should enforce these figure standards.
-
-## References
-
-- `references/visual-standards.md`: scientific figure typography, palettes, axes, legends, exports, and QA.
-- `references/map-standards.md`: world/regional map rules, GeoTIFF handling, projections, colorbars, and map color ramps.
-- `references/data-standards.md`: data cleaning, unit conversion, model metrics, statistics, and naming standards.
-- `references/current-project-style.md`: anonymized house-style examples extracted from prior scientific plotting work.
-
-## Helper Scripts
-
-- `scripts/figure_style.py`: reusable Matplotlib style helpers, color constants, no-text stripping, and save helpers.
-- `scripts/map_style.py`: reusable map color ramps, raster cleaning, lon/lat mesh helpers, colorbar text removal, and map saving.
+Copy or merge this repository's `AGENTS.md` into the target project's `AGENTS.md`.
 
 ## First-Version Note
 
-This first version intentionally does not define north-arrow or scale-bar standards. Those are reserved for a later update.
+This project still intentionally leaves north-arrow and scale-bar standards for a later update.

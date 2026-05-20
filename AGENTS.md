@@ -10,6 +10,17 @@ Before creating or editing any figure, ask which output version is required unle
 - `no_text`: remove all visible text while preserving axes/spines, tick marks, colorbar body, legend swatches/symbols, and graphical structure.
 - `both`: generate separate `_with_text` and `_no_text` outputs.
 
+## Template-First Rule
+
+When the requested figure resembles an existing pattern, start from `templates/` rather than re-creating the style from prose:
+
+- `scatter_regression.py`
+- `scenario_bar.py`
+- `cumulative_distribution.py`
+- `broken_axis_bar.py`
+- `shap_swarm.py`
+- `global_raster_map.py`
+
 ## Hard Defaults
 
 - Use English figure text by default.
@@ -25,30 +36,13 @@ Before creating or editing any figure, ask which output version is required unle
 
 When this repository is available, consult these files before implementing substantial plotting work:
 
+- `references/template-guide.md` for template selection.
 - `references/visual-standards.md` for scientific plot style and QA.
 - `references/map-standards.md` for maps, CRS, GeoTIFF, and colorbar rules.
 - `references/data-standards.md` for unit conversion, missing data, model metrics, and statistics.
 - `references/current-project-style.md` for extracted house-style examples.
 
-Use `scripts/figure_style.py` and `scripts/map_style.py` when writing Python plotting code.
-
-## Fixed Palettes
-
-Pollutants: `#46788E`, `#78B7C9`, `#F6E093`, `#E58B7B`.
-
-Train/test: Train `#3769b1`, Test `#d6221b`.
-
-Scenario/zone: `#3182bd`, `#9ecae1`, `#fd8d3c`, `#3769b1`.
-
-SHAP ramp: `#067FB8`, `#4C93BD`, `#9AC2DB`, `#BCD6E5`, `#FDE6DE`, `#F1B4A1`, `#E38C7B`, `#D26872`.
-
-Global map ramp: `#015D55`, `#52928A`, `#79B0A1`, `#CCD9CF`, `#FFE4E1`, `#FFA07A`, `#FF6347`, `#8B0000`.
-
-## Map Rules
-
-- World maps default to Robinson projection with lon/lat data drawn through PlateCarree.
-- Regional maps do not default to Robinson. Respect the data CRS and task; common lon/lat regional plots use EPSG:4326 / PlateCarree.
-- This first version intentionally does not define north-arrow or scale-bar standards.
+Use `scripts/figure_style.py` and `scripts/map_style.py` when writing lower-level Python plotting code.
 
 ## QA Before Completion
 

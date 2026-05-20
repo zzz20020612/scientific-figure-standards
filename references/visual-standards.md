@@ -2,6 +2,8 @@
 
 Use these standards for all scientific figures unless the user explicitly overrides them.
 
+For exact house-style replication, start from `references/template-guide.md` and the nearest file in `templates/` before applying these prose rules.
+
 ## Figure Contract
 
 For formal scientific outputs, establish a compact contract before plotting:
