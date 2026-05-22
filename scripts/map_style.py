@@ -22,6 +22,8 @@ GLOBAL_MAP_RAMP = [
     "#8B0000",
 ]
 
+SUBMISSION_FORMATS = ("png", "tiff", "pdf")
+
 
 def global_continuous_cmap(name: str = "user_global_continuous", n: int = 256):
     return LinearSegmentedColormap.from_list(name, GLOBAL_MAP_RAMP, N=n)
@@ -75,7 +77,7 @@ def remove_colorbar_text(cbar) -> None:
         text.set_color((0, 0, 0, 0))
 
 
-def save_map(fig, output_base: str | Path, *, version: str, formats: Iterable[str] = ("png",), dpi: int = 600):
+def save_map(fig, output_base: str | Path, *, version: str, formats: Iterable[str] = SUBMISSION_FORMATS, dpi: int = 300):
     output_base = Path(output_base)
     output_base.parent.mkdir(parents=True, exist_ok=True)
     saved = []

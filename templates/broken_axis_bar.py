@@ -18,7 +18,7 @@ def plot_broken_axis_bar(
     break_point: float = 55,
     output_base: str | Path = "broken_axis_bar",
     version: str = "with_text",
-    formats=("png",),
+    formats=("png", "tiff", "pdf"),
     dpi: int = 300,
 ):
     apply_house_style(base_font_size=12, complete_spines=True)

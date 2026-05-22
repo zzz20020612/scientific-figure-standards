@@ -30,7 +30,9 @@ When the requested figure resembles an existing pattern, start from `templates/`
 - Use restrained, publication-style palettes; do not use rainbow, random, or default matplotlib colors when a house palette applies.
 - For world maps, show left-edge latitude labels and bottom-edge longitude labels; default ticks are `xlocs=[-90, 0, 90]` and `ylocs=[90, 60, 30, 0, -30, -60, -90]`, with unrotated size-10 labels.
 - For no-text maps, keep those graticule labels as transparent placeholders.
-- Save raster outputs at 300 dpi minimum; use 600 dpi for final figures, maps, dense panels, or submission-like outputs.
+- For submission figures, export PNG at 300 dpi, TIFF at 300 dpi, and PDF by default.
+- Do not generate SVG by default unless explicitly requested or required by the target journal.
+- Use panel labels `a`, `b`, `c` without parentheses for multi-panel submission figures.
 - Use `bbox_inches="tight"` and `facecolor="white"` for saved figures.
 - Set `svg.fonttype = "none"` and `pdf.fonttype = 42` before vector export.
 
@@ -39,6 +41,7 @@ When the requested figure resembles an existing pattern, start from `templates/`
 When this repository is available, consult these files before implementing substantial plotting work:
 
 - `references/template-guide.md` for template selection.
+- `references/submission-standards.md` for final manuscript, journal, thesis, or publication-ready outputs.
 - `references/visual-standards.md` for scientific plot style and QA.
 - `references/map-standards.md` for maps, CRS, GeoTIFF, and colorbar rules.
 - `references/data-standards.md` for unit conversion, missing data, model metrics, and statistics.

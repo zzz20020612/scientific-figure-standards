@@ -19,8 +19,8 @@ def plot_global_raster_map(
     colorbar_label: str = "",
     vmin=None,
     vmax=None,
-    formats=("png",),
-    dpi: int = 600,
+    formats=("png", "tiff", "pdf"),
+    dpi: int = 300,
     mask_negative: bool = False,
 ):
     data, meta = read_clean_raster(tiff_path, mask_negative=mask_negative)

@@ -38,7 +38,7 @@ Current user world-map style:
 - horizontal colorbar, `pad=0.05`, `shrink=0.8`, `aspect=50`
 - white background
 - `tight_layout()` before saving
-- PNG at 300 or 600 dpi depending on final use
+- submission exports use PNG 300 dpi, TIFF 300 dpi, and PDF by default
 
 Canonical world-map graticule code:
 

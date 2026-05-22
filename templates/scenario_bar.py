@@ -20,8 +20,8 @@ def plot_scenario_bar(
     version: str = "with_text",
     ylabel: str = "Reduction Efficiency (%)",
     legend_labels=("Single-factor scenario", "Multi-factor scenario", "Comprehensive Integration Scenarios"),
-    formats=("png",),
-    dpi: int = 600,
+    formats=("png", "tiff", "pdf"),
+    dpi: int = 300,
 ):
     apply_house_style(base_font_size=12, complete_spines=True)
     fig, ax = plt.subplots(figsize=(9, 6))

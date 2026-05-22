@@ -3,7 +3,7 @@ name: scientific-figure-standards
 description: >-
   Global hard standards for the user's scientific figures, manuscript plots,
   maps, GeoTIFF/raster visualizations, model-result charts, SHAP/ML figures,
-  and publication exports. Use whenever Codex creates, revises, reviews,
+  and submission-ready publication exports. Use whenever Codex creates, revises, reviews,
   audits, or writes code for any plotting or map task in any local project.
   Enforce the user's house style first: English figure text by default,
   text/no-text version gate, Arial-based SCI style, user color systems,
@@ -22,13 +22,14 @@ Before writing or editing plotting code, establish:
 2. Figure purpose: exploratory, manuscript, presentation, supplement, or submission.
 3. Figure logic: for formal scientific figures, identify the one-sentence claim or the role of the plot.
 4. Data and transformations: identify units, missing values, nodata, negative values, normalization, log transforms, clipping, and uncertainty/statistics.
-5. Output formats: default to PNG; add SVG for formal scientific figures; add PDF/TIFF for submission-style outputs.
+5. Submission output formats: default to PNG 300 dpi, TIFF 300 dpi, and PDF unless the user specifies otherwise.
 
 Default no-text version: keep every text object and its layout reservation, but make text invisible/transparent. Do not delete labels, tick labels, legend text, colorbar labels, annotations, or map graticule labels if deleting them would change spacing. Retain axes/spines, tick marks, colorbar shape, legend swatches/symbols, and graphical structure unless the user requests a more minimal version.
 
 ## Load References
 
 - Read `references/visual-standards.md` for any scientific plot or manuscript figure.
+- Read `references/submission-standards.md` for final manuscript, journal, thesis, or publication-ready figures.
 - Read `references/map-standards.md` for maps, GeoTIFF, raster, gridded, CRS, or Cartopy work.
 - Read `references/data-standards.md` when plotting data that needs unit conversion, missing-value handling, model metrics, statistics, or raster preprocessing.
 - Read `references/current-project-style.md` when reproducing the user's established local style or extracting constants from the source project.
@@ -44,7 +45,8 @@ Use `templates/` first for exact house-style replication, then `scripts/figure_s
 - Preserve the user's clean SCI style: restrained colors, clear hierarchy, no decorative effects.
 - Use complete axes/spines by default for ordinary scientific plots. Do not adopt frameless Nature-style axes unless explicitly requested or required by a target journal.
 - Do not use random colors, rainbow colormaps, default matplotlib colors, or over-saturated palettes when a user palette applies.
-- Save raster outputs at 300 dpi minimum; use 600 dpi for final figures, maps, dense panels, or submission-like outputs.
+- For submission figures, export PNG at 300 dpi, TIFF at 300 dpi, and PDF by default.
+- Do not generate SVG by default. Add SVG only when explicitly requested or required by the target journal.
 - Use `bbox_inches="tight"` and `facecolor="white"` for saved figures.
 - Set `svg.fonttype = "none"` and `pdf.fonttype = 42` before vector export.
 - Close figures after saving in scripts that generate batches.
@@ -82,6 +84,9 @@ For formal research figures, borrow the rigor of a submission workflow while pre
 
 - Start from the figure's claim or role, not a favorite chart template.
 - In multi-panel figures, every panel must answer a unique scientific question.
+- Use panel labels `a`, `b`, `c`, ... without parentheses for multi-panel submission figures.
+- Keep figure typography from the user's current code/templates by default; do not automatically shrink fonts to generic journal small-font sizes.
+- Avoid large in-plot titles for submission figures; captions or manuscript text should carry titles and long explanations.
 - Give primary evidence the clearest visual position; make controls and robustness panels visually quieter.
 - Keep method/category colors consistent across all panels and all related figures.
 - Document or encode `n`, error bars, uncertainty, metric definitions, train/validation/test split, seeds/folds, or statistical tests when they are part of the claim.
@@ -110,4 +115,4 @@ Before claiming a figure is complete, verify:
 - Axes, spines, ticks, labels, legends, colorbars, and annotations do not overlap data.
 - Raster/map preprocessing handles nodata, NaN, inf, negative values, units, and transforms explicitly.
 - DPI and output formats match the purpose.
-- SVG/PDF text remains editable when vector output is required.
+- Submission outputs include PNG 300 dpi, TIFF 300 dpi, and PDF unless the user requested a different set.

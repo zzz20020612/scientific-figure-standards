@@ -6,7 +6,7 @@ Use templates when the user asks for a figure that resembles the established hou
 
 | Template | Use when | House-style anchors |
 |---|---|---|
-| `templates/scatter_regression.py` | Train/test model comparison or observed-vs-predicted plots | jointplot, train/test colors, marginal hist/KDE, 1:1 line, R2/RMSE legends, 600 dpi |
+| `templates/scatter_regression.py` | Train/test model comparison or observed-vs-predicted plots | jointplot, train/test colors, marginal hist/KDE, 1:1 line, R2/RMSE legends |
 | `templates/scenario_bar.py` | Scenario or grouped reduction-efficiency bars | 9x6 figure, blue/orange scenario family, complete border, vertical x labels, value labels |
 | `templates/cumulative_distribution.py` | Ranked cumulative contribution/distribution curves | 8x7 figure, pollutant palette, 0-100 axes, lower-right legend |
 | `templates/broken_axis_bar.py` | Top-contribution or heavily skewed bar charts | 8x8 broken axis, visible break marks, pollutant palette |
@@ -21,6 +21,7 @@ Use templates when the user asks for a figure that resembles the established hou
 4. Preserve the template's style constants unless the user explicitly requests a deviation.
 5. Generate requested `with_text`, `no_text`, or both versions.
 6. For `no_text`, create all labels, tick labels, legends, annotations, panel labels, colorbar text, and map graticule labels first; then make them transparent to preserve layout.
+7. For submission outputs, use the default format set `("png", "tiff", "pdf")` at 300 dpi unless the user or target journal specifies otherwise.
 
 ## New Figure Types
 

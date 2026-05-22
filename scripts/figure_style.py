@@ -40,6 +40,13 @@ SHAP_RAMP = [
     "#D26872",
 ]
 
+SUBMISSION_FORMATS = ("png", "tiff", "pdf")
+
+
+def mm_to_inch(mm: float) -> float:
+    """Convert millimeters to inches for final-size submission figures."""
+    return mm / 25.4
+
 
 def apply_house_style(base_font_size: float = 12, complete_spines: bool = True) -> None:
     """Apply the user's default scientific-figure style."""
@@ -110,11 +117,11 @@ def save_figure(
     output_base: str | Path,
     *,
     version: str = "with_text",
-    formats: Iterable[str] = ("png",),
+    formats: Iterable[str] = SUBMISSION_FORMATS,
     dpi: int = 300,
     tight: bool = True,
 ) -> list[Path]:
-    """Save a figure with house defaults and a version suffix."""
+    """Save a submission-ready figure with house defaults and a version suffix."""
     output_base = Path(output_base)
     output_base.parent.mkdir(parents=True, exist_ok=True)
     suffix = f"_{version}" if version in {"with_text", "no_text"} else ""

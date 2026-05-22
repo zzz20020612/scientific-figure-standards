@@ -21,7 +21,7 @@ The original source snapshot was not a Git repository, so no commit history was 
 - Arial-first typography.
 - Large, readable standalone figures.
 - Complete plot borders are common and should remain the default.
-- Clean high-DPI PNG output is common; formal outputs should now add SVG.
+- Clean PNG output is common; submission outputs now default to PNG 300 dpi, TIFF 300 dpi, and PDF.
 - Figure text is usually English even when source-code comments are not.
 - Avoid decorative visual effects.
 
@@ -61,8 +61,8 @@ World map ramp:
 
 Use these as samples:
 
-- Scatter/regression: seaborn jointplot, train/test colors, marginal hist/KDE, diagonal 1:1 reference, R2/RMSE in legends, 600 dpi.
-- Scenario bars: colored scenario families, vertical x labels, value labels above bars, complete box, no grid, 600 dpi.
+- Scatter/regression: seaborn jointplot, train/test colors, marginal hist/KDE, diagonal 1:1 reference, R2/RMSE in legends.
+- Scenario bars: colored scenario families, vertical x labels, value labels above bars, complete box, no grid.
 - SHAP swarm: custom blue-to-red ramp, small rasterized scatter points, mean absolute SHAP bars on a top twin axis, side colorbar.
 - SHAP pies: pollutant/feature color palette, separate legend export, white background.
 - Cumulative pollution distributions: pollutant colors, 0-100 axes, clean legend, 300 dpi.

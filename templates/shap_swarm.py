@@ -20,7 +20,7 @@ def plot_shap_swarm(
     output_base: str | Path = "shap_swarm",
     version: str = "with_text",
     sample_size_per_feature: int = 15500,
-    formats=("png",),
+    formats=("png", "tiff", "pdf"),
     dpi: int = 300,
 ):
     apply_house_style(base_font_size=10, complete_spines=True)

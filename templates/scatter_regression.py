@@ -27,8 +27,8 @@ def plot_scatter_regression(
     variable_label: str = "Variable",
     output_base: str | Path = "scatter_regression",
     version: str = "with_text",
-    formats=("png",),
-    dpi: int = 600,
+    formats=("png", "tiff", "pdf"),
+    dpi: int = 300,
 ):
     apply_house_style(base_font_size=12, complete_spines=True)
 

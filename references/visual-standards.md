@@ -4,6 +4,8 @@ Use these standards for all scientific figures unless the user explicitly overri
 
 For exact house-style replication, start from `references/template-guide.md` and the nearest file in `templates/` before applying these prose rules.
 
+For final manuscript, journal, thesis, or publication-ready figures, also read `references/submission-standards.md`.
+
 ## Figure Contract
 
 For formal scientific outputs, establish a compact contract before plotting:
@@ -36,7 +38,7 @@ Common house-style ranges:
 | Axis labels | 20-25 pt for large standalone plots; 10-14 pt for compact panels |
 | Tick labels | 20-25 pt for large standalone plots; 9-12 pt for compact panels |
 | Legends | 18-25 pt for large plots; 10-14 pt for compact panels |
-| Panel labels | bold `(a)`, `(b)`, `(c)` when needed; keep placement consistent |
+| Panel labels | bold `a`, `b`, `c` for submission panels; keep placement consistent |
 
 ## Axes, Spines, and Grid
 
@@ -115,10 +117,9 @@ Existing local examples include scatter/regression, SHAP, bars, broken axes, cum
 
 ## Exports
 
-- Default: PNG, 300 dpi minimum.
-- Final/high-quality: PNG at 600 dpi.
-- Formal scientific figure: add SVG with editable text.
-- Submission-style figure: add SVG + PDF + TIFF/PNG when requested.
+- Submission default: PNG at 300 dpi, TIFF at 300 dpi, and PDF.
+- Do not generate SVG by default. Add SVG only when explicitly requested or required by the target journal.
+- Keep `with_text` and `no_text` output formats identical when both versions are requested.
 - Always set:
 
 ```python
@@ -140,4 +141,4 @@ Check before delivery:
 - Colors match the semantic palette.
 - Text, legend, markers, and colorbars do not overlap.
 - Raster output is not blurry at intended size.
-- SVG/PDF text is editable when vector output is required.
+- PNG/TIFF/PDF outputs are present for submission figures unless the user requested a different format set.

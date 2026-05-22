@@ -12,7 +12,7 @@ The standards preserve a consistent house style for manuscript figures, scientif
 
 ## Version and License
 
-Current version: `0.3.0`
+Current version: `0.4.0`
 
 License: MIT. You may freely use, copy, modify, distribute, and adapt this project.
 
@@ -22,12 +22,14 @@ License: MIT. You may freely use, copy, modify, distribute, and adapt this proje
 - Treat `no_text` as transparent text placeholders that preserve layout, not as deleted labels.
 - Use English figure text by default.
 - Use an Arial-first, white-background, high-DPI scientific style.
+- Default submission exports to PNG 300 dpi, TIFF 300 dpi, and PDF.
+- Use panel labels `a`, `b`, `c` without parentheses for multi-panel submission figures.
 - Preserve complete axes/spines by default for ordinary scientific plots.
 - Use fixed house palettes for pollutants, train/test splits, scenarios, SHAP values, and global maps.
 - Apply explicit data handling for nodata, NaN, inf, negative values, unit conversion, log transforms, clipping, and normalization.
 - Use Robinson projection by default for world maps, while respecting CRS for regional maps.
 - Require concise left-edge latitude and bottom-edge longitude labels on world maps.
-- Add SVG/PDF editable-text export rules for formal scientific figures.
+- Do not generate SVG by default; add it only when explicitly requested or required by a target journal.
 - Use template files first when a requested figure matches an existing house-style pattern.
 - Run final QA for fonts, units, palettes, overlap, version correctness, and output quality.
 
@@ -48,16 +50,16 @@ Use prose standards only when no template matches.
 
 ```text
 scientific-figure-standards/
-├── SKILL.md
-├── AGENTS.md
-├── CLAUDE.md
-├── CHANGELOG.md
-├── LICENSE
-├── VERSION
-├── agents/
-├── references/
-├── scripts/
-└── templates/
+|-- SKILL.md
+|-- AGENTS.md
+|-- CLAUDE.md
+|-- CHANGELOG.md
+|-- LICENSE
+|-- VERSION
+|-- agents/
+|-- references/
+|-- scripts/
+`-- templates/
 ```
 
 ## Install for Codex

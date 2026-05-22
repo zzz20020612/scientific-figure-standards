@@ -10,7 +10,9 @@ Core behavior:
 - Ask whether output should be `with_text`, `no_text`, or both unless already specified.
 - Treat `no_text` as transparent text placeholders, not deleted text. Create labels/ticks/legends/colorbar text first, then make them invisible while preserving layout.
 - For world maps, keep concise left-edge latitude and bottom-edge longitude labels. Use `xlocs=[-90, 0, 90]`, `ylocs=[90, 60, 30, 0, -30, -60, -90]`, unrotated labels, and size about 10.
+- For submission figures, default to PNG 300 dpi, TIFF 300 dpi, and PDF. Do not default to SVG.
+- Use panel labels `a`, `b`, `c` without parentheses for multi-panel submission figures.
 - For house-style replication, start from `references/template-guide.md` and the nearest file in `templates/`.
-- Read `references/visual-standards.md`, `references/map-standards.md`, and `references/data-standards.md` when relevant.
+- Read `references/submission-standards.md`, `references/visual-standards.md`, `references/map-standards.md`, and `references/data-standards.md` when relevant.
 - Prefer the helper scripts in `scripts/figure_style.py` and `scripts/map_style.py` for Python plotting work.
 - Preserve the user's house style first; only switch to strict journal/Nature-style variants when explicitly requested.

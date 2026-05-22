@@ -17,7 +17,7 @@ def plot_cumulative_distribution(
     version: str = "with_text",
     xlabel: str = "Cumulative area percentage (%)",
     ylabel: str = "Cumulative Pollution Percentage (%)",
-    formats=("png",),
+    formats=("png", "tiff", "pdf"),
     dpi: int = 300,
 ):
     """Plot sorted cumulative contribution curves.
