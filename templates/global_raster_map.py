@@ -32,29 +32,20 @@ def plot_global_raster_map(
     ax.set_global()
     ax.add_feature(cfeature.COASTLINE, linewidth=0.5, color="black", alpha=0.7)
 
-    if version == "with_text":
-        gl = ax.gridlines(
-            draw_labels={"bottom": "x", "left": "y"},
-            linewidth=0.5,
-            color="gray",
-            alpha=0.5,
-            linestyle="--",
-            xlocs=[-90, 0, 90],
-            ylocs=[90, 60, 30, 0, -30, -60, -90],
-        )
-        gl.rotate_labels = False
-        gl.labels_style = {"rotation": 0, "size": 10}
-        gl.xlabel_style = {"size": 10}
-        gl.ylabel_style = {"size": 10}
-    else:
-        ax.gridlines(
-            linewidth=0.5,
-            color="gray",
-            alpha=0.5,
-            linestyle="--",
-            xlocs=[-90, 0, 90],
-            ylocs=[90, 60, 30, 0, -30, -60, -90],
-        )
+    label_color = "black" if version == "with_text" else (0, 0, 0, 0)
+    gl = ax.gridlines(
+        draw_labels={"bottom": "x", "left": "y"},
+        linewidth=0.5,
+        color="gray",
+        alpha=0.5,
+        linestyle="--",
+        xlocs=[-90, 0, 90],
+        ylocs=[90, 60, 30, 0, -30, -60, -90],
+    )
+    gl.rotate_labels = False
+    gl.labels_style = {"rotation": 0, "size": 10, "color": label_color}
+    gl.xlabel_style = {"size": 10, "color": label_color}
+    gl.ylabel_style = {"size": 10, "color": label_color}
 
     im = ax.pcolormesh(
         lon_grid,
@@ -67,9 +58,8 @@ def plot_global_raster_map(
         vmax=vmax,
     )
     cbar = plt.colorbar(im, ax=ax, orientation="horizontal", pad=0.05, shrink=0.8, aspect=50, format="%.2f")
-    if version == "with_text":
-        cbar.set_label(colorbar_label, fontsize=15)
-    else:
+    cbar.set_label(colorbar_label, fontsize=15)
+    if version != "with_text":
         remove_colorbar_text(cbar)
 
     plt.tight_layout()

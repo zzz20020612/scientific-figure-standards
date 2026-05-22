@@ -20,6 +20,7 @@ Use templates when the user asks for a figure that resembles the established hou
 3. Adapt only data loading, labels, units, and variable-specific limits.
 4. Preserve the template's style constants unless the user explicitly requests a deviation.
 5. Generate requested `with_text`, `no_text`, or both versions.
+6. For `no_text`, create all labels, tick labels, legends, annotations, panel labels, colorbar text, and map graticule labels first; then make them transparent to preserve layout.
 
 ## New Figure Types
 

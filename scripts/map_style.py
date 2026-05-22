@@ -63,14 +63,16 @@ def lonlat_mesh(bounds, height: int, width: int):
 
 
 def remove_colorbar_text(cbar) -> None:
-    cbar.set_label("")
-    cbar.set_ticks([])
-    cbar.set_ticklabels([])
-    cbar.ax.set_xticklabels([])
-    cbar.ax.set_yticklabels([])
+    """Hide colorbar text while preserving tick positions and label space."""
+    for label in (cbar.ax.xaxis.label, cbar.ax.yaxis.label):
+        label.set_alpha(0)
+        label.set_color((0, 0, 0, 0))
     for text in cbar.ax.get_xticklabels() + cbar.ax.get_yticklabels():
-        text.set_visible(False)
-        text.set_text("")
+        text.set_alpha(0)
+        text.set_color((0, 0, 0, 0))
+    for text in cbar.ax.texts:
+        text.set_alpha(0)
+        text.set_color((0, 0, 0, 0))
 
 
 def save_map(fig, output_base: str | Path, *, version: str, formats: Iterable[str] = ("png",), dpi: int = 600):

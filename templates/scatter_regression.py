@@ -71,33 +71,32 @@ def plot_scatter_regression(
     ax.set_xlim(0, max_val)
     ax.set_ylim(0, max_val)
 
-    if version == "with_text":
-        ax.set_xlabel(f"Obs {variable_label} Load Fraction", fontsize=25)
-        ax.set_ylabel(f"Pred {variable_label} Load Fraction", fontsize=25)
-        ax.tick_params(axis="both", labelsize=25)
+    ax.set_xlabel(f"Obs {variable_label} Load Fraction", fontsize=25)
+    ax.set_ylabel(f"Pred {variable_label} Load Fraction", fontsize=25)
+    ax.tick_params(axis="both", labelsize=25)
 
-        handles, labels = ax.get_legend_handles_labels()
-        if handles:
-            legends = []
-            for name, loc in (("Train", "upper left"), ("Test", "lower right")):
-                subset = data[data[dataset_col] == name]
-                if subset.empty:
-                    continue
-                r2 = r2_score(subset[actual_col], subset[predicted_col])
-                rmse = np.sqrt(mean_squared_error(subset[actual_col], subset[predicted_col]))
-                handle = handles[labels.index(name)] if name in labels else handles[0]
-                legend = ax.legend(
-                    [handle],
-                    [f"{'Training data' if name == 'Train' else 'Test data'}\nR2 = {r2:.2f}\nRMSE = {rmse:.3f}"],
-                    fontsize=25,
-                    loc=loc,
-                    frameon=True,
-                    facecolor="lightgray",
-                )
-                legends.append(legend)
-            if legends:
-                ax.add_artist(legends[0])
-    else:
+    handles, labels = ax.get_legend_handles_labels()
+    if handles:
+        legends = []
+        for name, loc in (("Train", "upper left"), ("Test", "lower right")):
+            subset = data[data[dataset_col] == name]
+            if subset.empty:
+                continue
+            r2 = r2_score(subset[actual_col], subset[predicted_col])
+            rmse = np.sqrt(mean_squared_error(subset[actual_col], subset[predicted_col]))
+            handle = handles[labels.index(name)] if name in labels else handles[0]
+            legend = ax.legend(
+                [handle],
+                [f"{'Training data' if name == 'Train' else 'Test data'}\nR2 = {r2:.2f}\nRMSE = {rmse:.3f}"],
+                fontsize=25,
+                loc=loc,
+                frameon=True,
+                facecolor="lightgray",
+            )
+            legends.append(legend)
+        if legends:
+            ax.add_artist(legends[0])
+    if version != "with_text":
         strip_text_for_no_text(g.fig)
 
     g.fig.subplots_adjust(hspace=0, wspace=0)

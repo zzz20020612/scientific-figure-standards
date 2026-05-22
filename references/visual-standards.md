@@ -96,7 +96,9 @@ When a new category has no established user palette, choose a restrained semanti
 - Prefer shared legends or standalone legend exports for multi-panel figures.
 - Keep legends away from dense data.
 - Legend frames may be white/light gray with thin edges in the user's house style; frameless legends are optional for strict journal style.
-- For no-text versions, remove legend text but preserve swatches, markers, or color patches when useful.
+- For no-text versions, keep legend text, axis labels, tick labels, colorbar labels, panel labels, and annotations as layout placeholders but make the text invisible/transparent.
+- Always create the same text-bearing objects in `no_text` as in `with_text` before hiding text. Do not skip label, legend, or colorbar creation in the no-text branch.
+- Avoid clearing strings, removing tick locations, turning off tick labels, or deleting text artists when the user may need the original text positions for later manual composition.
 
 ## Figure Types Are Not a Boundary
 
@@ -132,7 +134,7 @@ mpl.rcParams["pdf.fonttype"] = 42
 Check before delivery:
 
 - Correct requested version: with_text, no_text, or both.
-- No text remains in no-text outputs.
+- No visible text remains in no-text outputs, while original text positions and spacing are preserved.
 - No visible mojibake, accidental Chinese labels, or fallback CJK font unless requested.
 - Units match data transformations.
 - Colors match the semantic palette.

@@ -40,11 +40,10 @@ def plot_broken_axis_bar(
     ax_top.tick_params(axis="y", labelsize=40)
     ax_bottom.tick_params(axis="y", labelsize=40)
 
-    if version == "with_text":
-        for bar, label in zip(bars_top, annotations):
-            if label:
-                ax_top.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + max_percentage * 0.05, str(label), ha="center", va="bottom", fontsize=30, fontweight="bold")
-    else:
+    for bar, label in zip(bars_top, annotations):
+        if label:
+            ax_top.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + max_percentage * 0.05, str(label), ha="center", va="bottom", fontsize=30, fontweight="bold")
+    if version != "with_text":
         strip_text_for_no_text(fig)
 
     d = 0.010

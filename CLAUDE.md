@@ -8,6 +8,8 @@ Core behavior:
 
 - For any plotting, map, GeoTIFF/raster, model-result chart, manuscript figure, or publication-export task, use the standards in `SKILL.md`.
 - Ask whether output should be `with_text`, `no_text`, or both unless already specified.
+- Treat `no_text` as transparent text placeholders, not deleted text. Create labels/ticks/legends/colorbar text first, then make them invisible while preserving layout.
+- For world maps, keep concise left-edge latitude and bottom-edge longitude labels. Use `xlocs=[-90, 0, 90]`, `ylocs=[90, 60, 30, 0, -30, -60, -90]`, unrotated labels, and size about 10.
 - For house-style replication, start from `references/template-guide.md` and the nearest file in `templates/`.
 - Read `references/visual-standards.md`, `references/map-standards.md`, and `references/data-standards.md` when relevant.
 - Prefer the helper scripts in `scripts/figure_style.py` and `scripts/map_style.py` for Python plotting work.

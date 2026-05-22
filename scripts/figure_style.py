@@ -75,21 +75,34 @@ def style_axes(ax, *, complete_spines: bool = True, grid: bool = False) -> None:
     ax.grid(grid, linestyle="--", linewidth=0.5, alpha=0.5, color="gray")
 
 
-def strip_text_for_no_text(fig) -> None:
-    """Remove visible text while preserving graphical structure."""
+def _make_text_invisible(text) -> None:
+    """Hide text without changing its layout reservation."""
+    text.set_alpha(0)
+    text.set_color((0, 0, 0, 0))
+
+
+def hide_text_preserve_layout(fig) -> None:
+    """Hide visible text while preserving text objects, padding, and layout."""
     for ax in fig.axes:
-        ax.set_title("")
-        ax.set_xlabel("")
-        ax.set_ylabel("")
-        ax.set_xticklabels([])
-        ax.set_yticklabels([])
+        _make_text_invisible(ax.title)
+        _make_text_invisible(ax.xaxis.label)
+        _make_text_invisible(ax.yaxis.label)
+        for text in ax.get_xticklabels() + ax.get_yticklabels():
+            _make_text_invisible(text)
         legend = ax.get_legend()
         if legend is not None:
             for text in legend.get_texts():
-                text.set_text("")
-            legend.set_title("")
+                _make_text_invisible(text)
+            _make_text_invisible(legend.get_title())
         for text in ax.texts:
-            text.set_text("")
+            _make_text_invisible(text)
+    for text in fig.texts:
+        _make_text_invisible(text)
+
+
+def strip_text_for_no_text(fig) -> None:
+    """Backward-compatible alias for the no-text layout-preserving standard."""
+    hide_text_preserve_layout(fig)
 
 
 def save_figure(

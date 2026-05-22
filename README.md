@@ -12,19 +12,21 @@ The standards preserve a consistent house style for manuscript figures, scientif
 
 ## Version and License
 
-Current version: `0.2.0`
+Current version: `0.3.0`
 
 License: MIT. You may freely use, copy, modify, distribute, and adapt this project.
 
 ## What It Enforces
 
 - Ask whether each output should be `with_text`, `no_text`, or both before plotting.
+- Treat `no_text` as transparent text placeholders that preserve layout, not as deleted labels.
 - Use English figure text by default.
 - Use an Arial-first, white-background, high-DPI scientific style.
 - Preserve complete axes/spines by default for ordinary scientific plots.
 - Use fixed house palettes for pollutants, train/test splits, scenarios, SHAP values, and global maps.
 - Apply explicit data handling for nodata, NaN, inf, negative values, unit conversion, log transforms, clipping, and normalization.
 - Use Robinson projection by default for world maps, while respecting CRS for regional maps.
+- Require concise left-edge latitude and bottom-edge longitude labels on world maps.
 - Add SVG/PDF editable-text export rules for formal scientific figures.
 - Use template files first when a requested figure matches an existing house-style pattern.
 - Run final QA for fonts, units, palettes, overlap, version correctness, and output quality.

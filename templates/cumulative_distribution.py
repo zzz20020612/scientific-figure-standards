@@ -44,14 +44,13 @@ def plot_cumulative_distribution(
     ax.set_yticks(np.arange(0, 101, 20))
     ax.tick_params(axis="both", which="both", length=6, labelsize=20)
 
-    if version == "with_text":
-        ax.set_xlabel(xlabel, fontsize=20)
-        ax.set_ylabel(ylabel, fontsize=20)
-        legend = ax.legend(fontsize=18, loc="lower right", framealpha=1, columnspacing=0.8, handlelength=1.5, handletextpad=0.5, borderpad=0.4)
-        legend.get_frame().set_facecolor("white")
-        legend.get_frame().set_edgecolor("gray")
-        legend.get_frame().set_linewidth(0.5)
-    else:
+    ax.set_xlabel(xlabel, fontsize=20)
+    ax.set_ylabel(ylabel, fontsize=20)
+    legend = ax.legend(fontsize=18, loc="lower right", framealpha=1, columnspacing=0.8, handlelength=1.5, handletextpad=0.5, borderpad=0.4)
+    legend.get_frame().set_facecolor("white")
+    legend.get_frame().set_edgecolor("gray")
+    legend.get_frame().set_linewidth(0.5)
+    if version != "with_text":
         strip_text_for_no_text(fig)
 
     saved = save_figure(fig, output_base, version=version, formats=formats, dpi=dpi)

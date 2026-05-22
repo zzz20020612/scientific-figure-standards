@@ -24,7 +24,7 @@ Before writing or editing plotting code, establish:
 4. Data and transformations: identify units, missing values, nodata, negative values, normalization, log transforms, clipping, and uncertainty/statistics.
 5. Output formats: default to PNG; add SVG for formal scientific figures; add PDF/TIFF for submission-style outputs.
 
-Default no-text version: remove all visible text, but retain axes/spines, tick marks, colorbar shape, legend swatches/symbols, and graphical structure unless the user requests a more minimal version.
+Default no-text version: keep every text object and its layout reservation, but make text invisible/transparent. Do not delete labels, tick labels, legend text, colorbar labels, annotations, or map graticule labels if deleting them would change spacing. Retain axes/spines, tick marks, colorbar shape, legend swatches/symbols, and graphical structure unless the user requests a more minimal version.
 
 ## Load References
 
@@ -69,8 +69,9 @@ Only write a new plot from scratch when no template fits. If a new figure type w
 - Avoid large in-plot titles for manuscript figures unless the user asks; captions usually carry the title.
 
 `no_text`:
-- Remove axis labels, tick labels, titles, legend text, colorbar labels, and annotation text.
+- Make axis labels, tick labels, titles, legend text, colorbar labels, panel labels, and annotation text invisible/transparent while preserving their original layout positions.
 - Keep axis lines, tick marks, legend swatches/symbols, colorbar body/outline, and core graphical marks.
+- Generate the same text objects as `with_text` first, then hide them. Do not skip label creation in the no-text branch.
 - Generate no-text outputs from code, not by screenshot cropping.
 
 When both versions are requested, save separate files with `_with_text` and `_no_text` suffixes.
@@ -89,6 +90,11 @@ For formal research figures, borrow the rigor of a submission workflow while pre
 ## Map Rules
 
 - World maps default to Robinson projection with longitude/latitude data drawn through PlateCarree.
+- World maps must show graticule labels on the left edge and bottom edge in `with_text` outputs.
+- World-map longitude ticks default to `[-90, 0, 90]`; latitude ticks default to `[90, 60, 30, 0, -30, -60, -90]`.
+- Use concise graticule styling from the user's code: gray dashed gridlines, linewidth about 0.5, alpha about 0.5, labels not rotated, label size about 10.
+- In `no_text` world maps, still create the same left/bottom graticule labels and make them transparent; never disable `draw_labels` just because the version is no-text.
+- Regional maps inherit the concise left/bottom graticule style when graticules are needed, but choose sparse ticks from the regional extent instead of using world-map tick values.
 - Regional maps do not default to Robinson. Respect the data CRS and task; common lon/lat regional plots use EPSG:4326 / PlateCarree.
 - Use the user's global map ramp for emission, variation, risk, rate, or intensity rasters unless the variable semantics require another palette.
 - First version does not define north arrow or scale bar standards. Treat those as future extensions and ask the user if needed.

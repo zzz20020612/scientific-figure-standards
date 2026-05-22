@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2026-05-22
+
+### Changed
+
+- Upgraded `no_text` behavior from text deletion to transparent text placeholders that preserve layout.
+- Updated all bundled templates to create text-bearing objects first, then hide text for no-text outputs.
+- Made world-map left/bottom graticule labels a hard standard, including the user's original `xlocs=[-90, 0, 90]`, `ylocs=[90, 60, 30, 0, -30, -60, -90]`, unrotated labels, and size-10 styling.
+- Updated regional map guidance to use sparse, concise left/bottom graticules when graticules are needed.
+- Updated colorbar no-text handling to preserve tick positions and label space instead of deleting ticks or labels.
+
 ## [0.2.0] - 2026-05-20
 
 ### Added

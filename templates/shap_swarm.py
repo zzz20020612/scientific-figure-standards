@@ -77,19 +77,16 @@ def plot_shap_swarm(
     ax2 = ax.twiny()
     bars = ax2.barh(range(len(sorted_feature_names)), sorted_importance, color=bar_color, alpha=0.3, height=0.6, edgecolor="none")
 
-    if version == "with_text":
-        for bar, value in zip(bars, sorted_importance):
-            ax2.text(max(sorted_importance) * 0.02, bar.get_y() + bar.get_height() / 2, f"{value:.3f}", va="center", ha="left", fontsize=8, color="black")
-        ax2.set_xlabel("Mean |SHAP Value|", fontsize=10, color=bar_color)
-        ax2.tick_params(axis="x", labelsize=9, colors=bar_color)
-        fig.subplots_adjust(left=0.25, right=0.82)
-        cax = fig.add_axes([0.85, 0.2, 0.025, 0.6])
-        cbar = fig.colorbar(plt.cm.ScalarMappable(cmap=custom_cmap), cax=cax)
-        cbar.set_label("Feature Value", fontsize=10)
-        cbar.ax.tick_params(labelsize=9)
-        cbar.outline.set_visible(False)
-    else:
-        strip_text_for_no_text(fig)
+    for bar, value in zip(bars, sorted_importance):
+        ax2.text(max(sorted_importance) * 0.02, bar.get_y() + bar.get_height() / 2, f"{value:.3f}", va="center", ha="left", fontsize=8, color="black")
+    ax2.set_xlabel("Mean |SHAP Value|", fontsize=10, color=bar_color)
+    ax2.tick_params(axis="x", labelsize=9, colors=bar_color)
+    fig.subplots_adjust(left=0.25, right=0.82)
+    cax = fig.add_axes([0.85, 0.2, 0.025, 0.6])
+    cbar = fig.colorbar(plt.cm.ScalarMappable(cmap=custom_cmap), cax=cax)
+    cbar.set_label("Feature Value", fontsize=10)
+    cbar.ax.tick_params(labelsize=9)
+    cbar.outline.set_visible(False)
 
     for spine_name, spine in ax.spines.items():
         spine.set_visible(spine_name != "top")
@@ -97,6 +94,9 @@ def plot_shap_swarm(
     for spine in ax2.spines.values():
         spine.set_visible(True)
         spine.set_linewidth(0.5)
+
+    if version != "with_text":
+        strip_text_for_no_text(fig)
 
     saved = save_figure(fig, output_base, version=version, formats=formats, dpi=dpi)
     plt.close(fig)
